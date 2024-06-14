@@ -1,0 +1,344 @@
+{
+    "confusion metrics": {
+        "Class": {
+            "0": "No Reversal",
+            "1": "Peak",
+            "2": "Valley",
+            "3": "Macro-average",
+            "4": "Micro-average"
+        },
+        "Accuracy": {
+            "0": 0.2777777777777778,
+            "1": 0.2777777777777778,
+            "2": 0.2777777777777778,
+            "3": 0.2777777777777778,
+            "4": 0.2777777777777778
+        },
+        "Precision": {
+            "0": 0.0,
+            "1": 0.21428571428571427,
+            "2": 0.3181818181818182,
+            "3": 0.17748917748917747,
+            "4": 0.2777777777777778
+        },
+        "Recall": {
+            "0": 0.0,
+            "1": 0.23076923076923078,
+            "2": 0.5,
+            "3": 0.2435897435897436,
+            "4": 0.2777777777777778
+        },
+        "F1-Score": {
+            "0": 0.0,
+            "1": 0.22222222222222224,
+            "2": 0.3888888888888889,
+            "3": 0.20370370370370372,
+            "4": 0.2777777777777778
+        }
+    },
+    "pr_auc": [
+        0.2632,
+        0.4049,
+        0.318
+    ],
+    "roc_auc": [
+        0.5473251028806584,
+        0.5050167224080268,
+        0.35064935064935066
+    ],
+    "kappa": -0.16129032258064524,
+    "mcc": -0.17965674766740417,
+    "execution_time": 196.85298681259155,
+    "using_data": {
+        "train_indices": [
+            "^GSPC",
+            "^IXIC",
+            "^DJI",
+            "^RUA"
+        ],
+        "test_indices": "^GSPC",
+        "start_date": "2001-01-01",
+        "stop_date": "2024-01-01",
+        "features_params": [
+            {
+                "type": "Reversals",
+                "local_type": "Close",
+                "oder_days": 15,
+                "ma_days": 5
+            },
+            {
+                "type": "MACD",
+                "fastperiod": 5,
+                "slowperiod": 10,
+                "signalperiod": 9
+            },
+            {
+                "type": "ROC",
+                "trend_days": 5
+            },
+            {
+                "type": "Stochastic Oscillator",
+                "trend_days": 5
+            },
+            {
+                "type": "CCI",
+                "timeperiod": 14
+            },
+            {
+                "type": "RSI",
+                "timeperiod": 14
+            },
+            {
+                "type": "MA",
+                "timeperiod": 10
+            },
+            {
+                "type": "VMA",
+                "timeperiod": 20
+            },
+            {
+                "type": "pctChange"
+            },
+            {
+                "type": "13W Treasury Yield",
+                "start_date": "2001-01-01",
+                "end_date": "2024-01-01"
+            },
+            {
+                "type": "5Y Treasury Yield",
+                "start_date": "2001-01-01",
+                "end_date": "2024-01-01"
+            },
+            {
+                "type": "10Y Treasury Yield",
+                "start_date": "2001-01-01",
+                "end_date": "2024-01-01"
+            },
+            {
+                "type": "30Y Treasury Yield",
+                "start_date": "2001-01-01",
+                "end_date": "2024-01-01"
+            },
+            {
+                "type": "Bollinger Bands",
+                "timeperiod": 20,
+                "nbdevup": 2,
+                "nbdevdn": 2
+            },
+            {
+                "type": "ATR",
+                "timeperiod": 14
+            },
+            {
+                "type": "OBV"
+            },
+            {
+                "type": "Parabolic SAR",
+                "start": 0.02,
+                "increment": 0.02,
+                "maximum": 0.2
+            },
+            {
+                "type": "MOM",
+                "timeperiod": 10
+            },
+            {
+                "type": "Williams %R",
+                "lookback_period": 14
+            },
+            {
+                "type": "Chaikin MF",
+                "timeperiod": 20
+            }
+        ],
+        "data_cleaning": {
+            "clean_type": "MissingData",
+            "strategy": "auto"
+        },
+        "train_split_ratio": 0.7,
+        "val_split_ratio": 0.1,
+        "target_col": "Reversals",
+        "feature_cols": [
+            "Open",
+            "High",
+            "Low",
+            "Close",
+            "Adj Close",
+            "Volume",
+            "Reversals",
+            "MACD_dif",
+            "MACD_dem",
+            "MACD_histogram",
+            "ROC",
+            "StoK",
+            "StoD",
+            "CCI",
+            "RSI",
+            "MA",
+            "VMA",
+            "pctChange",
+            "13W Treasury Yield",
+            "5Y Treasury Yield",
+            "10Y Treasury Yield",
+            "30Y Treasury Yield",
+            "upperband",
+            "middleband",
+            "lowerband",
+            "ATR",
+            "OBV",
+            "Parabolic SAR",
+            "MOM",
+            "Williams %R"
+        ],
+        "look_back": 64,
+        "predict_steps": 30,
+        "train_slide_steps": 1,
+        "test_slide_steps": 30,
+        "model_params": {
+            "RNN": {
+                "hidden_size": 32,
+                "num_layers": 1,
+                "dropout": 0.2
+            },
+            "LSTM": {
+                "hidden_size": 32,
+                "num_layers": 1,
+                "dropout": 0.2
+            },
+            "CNN_LSTM": {
+                "conv_1_kernel": 3,
+                "conv_1_padding": 1,
+                "MaxPool1d_1_kernel_size": 2,
+                "conv_2_kernel": 3,
+                "conv_2_padding": 1,
+                "MaxPool1d_2_kernel_size": 2,
+                "num_layers": 1,
+                "dropout": 0,
+                "layer_sizes": [
+                    256,
+                    64,
+                    3
+                ],
+                "fc_1_out_features": 2048,
+                "fc_2_out_features": 512
+            },
+            "DNN_3layers": {
+                "fc_1_out_features": 2048,
+                "fc_2_out_features": 512,
+                "dropout": 0
+            },
+            "DNN_5layers": {
+                "dropout": 0.2
+            },
+            "DummyClassifier": {},
+            "DNN_FlexibleLayers": {
+                "num_layers": 3,
+                "layer_sizes": [
+                    2048,
+                    512,
+                    3
+                ],
+                "dropout": 0,
+                "fc_1_out_features": 2048,
+                "fc_2_out_features": 512
+            },
+            "LeNet": {
+                "cnn_layers": {
+                    "kernel_sizes": [
+                        5,
+                        5,
+                        5
+                    ],
+                    "paddings": [
+                        2,
+                        2,
+                        2
+                    ],
+                    "MaxPool1d_kernel_size": [
+                        2,
+                        2,
+                        2
+                    ]
+                },
+                "fc_layers": {
+                    "layer_sizes": [
+                        2048,
+                        512,
+                        3
+                    ]
+                },
+                "dropout": 0
+            },
+            "AlexNet": {
+                "cnn_layers": {
+                    "kernel_sizes": [
+                        5,
+                        5,
+                        5
+                    ],
+                    "paddings": [
+                        2,
+                        2,
+                        2
+                    ]
+                },
+                "fc_layers": {
+                    "layer_sizes": [
+                        2048,
+                        512,
+                        3
+                    ],
+                    "dropout": 0
+                }
+            },
+            "VGG": {
+                "cnn_layers": {
+                    "kernel_sizes": [
+                        3,
+                        3,
+                        3,
+                        3
+                    ],
+                    "paddings": [
+                        1,
+                        1,
+                        1,
+                        1
+                    ]
+                },
+                "fc_layers": {
+                    "layer_sizes": [
+                        5248,
+                        512,
+                        3
+                    ]
+                },
+                "dropout": 0
+            }
+        },
+        "model_type": "DNN_FlexibleLayers",
+        "training_epoch_num": 10000,
+        "online_training_epoch_num": 200,
+        "online_train_update_interval": 30,
+        "learning_rate": 1e-06,
+        "online_train_learning_rate": 1e-06,
+        "weight_decay": 0,
+        "online_train_weight_decay": 0,
+        "batch_size": 4096,
+        "patience": 50,
+        "min_delta": 0,
+        "shuffle": false,
+        "data_update_mode": "append",
+        "trained_model_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/models/",
+        "online_trained_model_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/models/",
+        "reversals_ratio_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/reversals_ratio.png",
+        "confusion_matrix_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/confusion_matrix.png",
+        "training_curve_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/training_curve.png",
+        "online_training_curve_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/online_training_curve.png",
+        "pr_auc_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/pr_auc.png",
+        "roc_auc_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/roc_auc.png",
+        "stock_and_predictions_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/stock_and_predictions.png",
+        "summary_save_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/reports/summary.json",
+        "val_training_curve_path": "DNN_Projects_long/Close-15-1e-06-64-30-False/all-DNN_FlexibleLayers-1e-06-False/plots/val_training_curve.png"
+    }
+}
