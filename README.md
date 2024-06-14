@@ -1,0 +1,2 @@
+# predict_reversals_from_trend
+# reversals_prediction_0615
